@@ -30,7 +30,8 @@
   ^+  rock
   ?-  -.wave
     %put  (put:on-poast rock [id .]:poast.wave)
-    %gas  (gas:on-poast rock (turn poasts.wave |=(p=poast [id .]:p)))
-    %del  (del:on-poast rock id.wave)
+    %gas  %+  gas:on-poast  rock
+          (turn poasts.wave |=(p=poast [id .]:p))
+    %del  +:(del:on-poast rock id.wave)
   ==
 --

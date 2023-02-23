@@ -11,7 +11,7 @@
 +*  this  .
     su  =/  da  (da poast ,[%poast ~])
             ~(. da subs bowl -:!>(*result:da) -:!>(*from:da))
-    pu  =/  du  (du log ,[%poast ~])
+    pu  =/  du  (du poast ,[%poast ~])
             ~(. du pubs bowl -:!>(*result:du))
 ++  on-init  `this
 ++  on-save  !>([subs pubs])
