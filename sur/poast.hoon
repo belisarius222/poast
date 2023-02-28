@@ -13,9 +13,13 @@
     ++  lte-ids
       |=  [a=id b=id]
       ^-  ?
-      %+  lte
-        ?@(a a date.a)
-      ?@(b b date.b)
+      ?@  a
+        (lte a ?@(b b date.b))
+      ?@  b
+        (lte date.a b)
+      ?:  =(date.a date.b)
+        (lte num.a num.b)
+      (lte date.a date.b)
     --
 |%
 ++  name  %poast
