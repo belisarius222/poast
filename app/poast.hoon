@@ -27,11 +27,13 @@
   |=  [=mark =vase]
   ^-  (quip card:agent:gall _this)
   ?+    mark  `this
-      %poast
+      %poast-wave
     =^  cards  pubs  (give:pu !<([[%poast ~] wave:poast] vase))
+    ~&  >  "pubs is: {<read:pu>}"
     [cards this]
   ::
       %follow
+    =-  ~&  >  "subs is: {<read:su>}"  -
     :_  this
     ~[(surf:su !<(@p (slot 2 vase)) %poast !<([%poast ~] (slot 3 vase)))]
   ::
@@ -56,11 +58,13 @@
     ?-  msg=!<($%(into:pu) (fled vase))
         [[%poast ~] *]
       =^  cards  pubs  (apply:pu msg)
+      ~&  >  "pubs is: {<read:pu>}"
       [cards this]
     ==
   ::
       %sss-poast
     =^  cards  subs  (apply:su !<(into:su (fled vase)))
+    ~&  >  "subs is: {<read:su>}"
     [cards this]
   ==
 ++  on-agent
