@@ -1,34 +1,61 @@
-/-  poast
-/+  verb, dbug, *sss
+/+  verb, dbug, *sss, rudder, *poast
+/~  pages  (page:rudder rock action)  /app/poast/webui
 ::
 %-  agent:dbug
 %+  verb  &
 ::
-=/  subs  (mk-subs poast ,[%poast ~])
-=/  pubs  (mk-pubs poast ,[%poast ~])
+=/  subs  (mk-subs ..wave ,[%poast ~])
+=/  pubs  (mk-pubs ..wave ,[%poast ~])
 ::
 |_  =bowl:gall
 +*  this  .
-    su  =/  da  (da poast ,[%poast ~])
+    su  =/  da  (da ..wave ,[%poast ~])
             ~(. da subs bowl -:!>(*result:da) -:!>(*from:da))
-    pu  =/  du  (du poast ,[%poast ~])
+    pu  =/  du  (du ..wave ,[%poast ~])
             ~(. du pubs bowl -:!>(*result:du))
-++  on-init  `this
+++  on-init
+  ^-  (quip card:agent:gall _this)
+  :_  this
+  [%pass /whatever %arvo %e %connect [~ /poast] dap.bowl]~
 ++  on-save  !>([subs pubs])
 ++  on-load
   |=  =vase
+  ^-  (quip card:agent:gall _this)
   =/  old  !<([=_subs =_pubs] vase)
-  :-  ~
+  :-  [%pass /whatever %arvo %e %connect [~ /poast] dap.bowl]~
   %=  this
     subs  subs.old
     pubs  pubs.old
   ==
+::
 ++  on-poke
   |=  [=mark =vase]
   ^-  (quip card:agent:gall _this)
   ?+    mark  `this
+      %handle-http-request
+    =;  [fex=(list card:agent:gall) =rock]
+      [fex this]  ::  TODO update state with rock
+    %.  [bowl !<(order:rudder vase) *rock]  ::  TODO state
+    %:  (steer:rudder rock action)
+      pages
+      (point:rudder /[dap.bowl] & ~(key by pages))
+      (fours:rudder *rock)  ::  TODO state
+      |=  =action
+      ^-  $@  brief:rudder
+          [brief:rudder (list card:agent:gall) rock]
+      ?+    -.action  !!
+          %new-poast
+        :+  ~
+          ::  TODO look up quoted poast by id
+          =/  =poast  [our.bowl now.bowl text.action quote=~]
+          =/  =cage  [%poast-wave !>(poast)]
+          [%pass /new-poast %agent [our dap]:bowl %poke cage]~
+        *rock  ::  TODO state
+      ==
+    ==
+  ::
       %poast-wave
-    =^  cards  pubs  (give:pu !<([[%poast ~] wave:poast] vase))
+    =^  cards  pubs  (give:pu !<([[%poast ~] wave] vase))
     ~&  >  "pubs is: {<read:pu>}"
     [cards this]
   ::

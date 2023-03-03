@@ -25,7 +25,7 @@
 ++  name  %poast
 +$  rock  ((mop id poast) lte-ids)
 +$  wave
-  $%  [%put =poast]               ::  add one new poast
+  $%  [%put =poast]               ::  add one new poast  ::  TODO remove
       [%gas poasts=(list poast)]  ::  add multiple new poasts
       [%del =id]                  ::  delete a poast
   ==
